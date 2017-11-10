@@ -30,7 +30,7 @@ public class Wykres extends Activity{
     LineGraphSeries<DataPoint> series4;
 
 
-    //zmiana
+    //zmiana 2
 
 
     @Override
