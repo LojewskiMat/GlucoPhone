@@ -33,13 +33,26 @@ public class Loguj extends Activity{
                                                    String mLogin = String.valueOf(login.getText());
                                                    String mHaslo = String.valueOf(haslo.getText());
 
-                                                   if(mLogin.equals("admin")  && mHaslo.equals("admin")){
+                                                   if (mLogin.equals("admin") && mHaslo.equals("admin")) {
 
                                                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                                        startActivity(intent);
                                                    } else {
-                                                       Toast.makeText(getBaseContext(), "Niepoprawny login lub hasło", Toast.LENGTH_SHORT).show();
 
+                                                       if (mLogin.equals("mama") && mHaslo.equals("mama")) {
+
+                                                           Intent intent = new Intent(getApplicationContext(), MainActivityMama.class);
+                                                           startActivity(intent);
+                                                       } else {
+
+                                                           if (mLogin.equals("doktor") && mHaslo.equals("doktor")) {
+
+                                                               Intent intent = new Intent(getApplicationContext(), MainActivityDoktor.class);
+                                                               startActivity(intent);
+                                                           } else {
+                                                               Toast.makeText(getBaseContext(), "Niepoprawny login lub hasło", Toast.LENGTH_SHORT).show();
+                                                           }
+                                                       }
                                                    }
                                                }
                                            }

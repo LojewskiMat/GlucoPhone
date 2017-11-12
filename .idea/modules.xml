@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/GlucoPhon.iml" filepath="$PROJECT_DIR$/.idea/GlucoPhon.iml" />
+      <module fileurl="file://$PROJECT_DIR$/GlucoPhon.iml" filepath="$PROJECT_DIR$/GlucoPhon.iml" />
       <module fileurl="file://$PROJECT_DIR$/GlucoPhone.iml" filepath="$PROJECT_DIR$/GlucoPhone.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
