@@ -4,6 +4,7 @@ package com.example.gosia.glucophone;
  * Created by Gosia on 20.10.2017.
  */
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
@@ -76,6 +77,7 @@ public class DodajPomiar extends Activity implements View.OnClickListener {
 
             final EditText nowyPomiar = (EditText) findViewById(R.id.editText);
             String poziomCukru = String.valueOf(nowyPomiar.getText());
+            double poziomCukruDouble = Double.parseDouble(nowyPomiar.getText().toString());
 
 
             try {
@@ -100,9 +102,43 @@ public class DodajPomiar extends Activity implements View.OnClickListener {
 
                 if (poJedzeniu.isChecked()) {
                     db2.addQuestion(q5);
+                    if(poziomCukruDouble>=140){
+                        AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(this);
+                        dlgAlert.setMessage("Twój poziom cukru jest za wysoki!");
+                        dlgAlert.setTitle("UWAGA!");
+                        dlgAlert.setPositiveButton("OK", null);
+                        dlgAlert.setCancelable(true);
+                        dlgAlert.create().show();
+                    }
+                    if(poziomCukruDouble<=70){
+                        AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(this);
+                        dlgAlert.setMessage("Twój poziom cukru jest za niski!");
+                        dlgAlert.setTitle("UWAGA!");
+                        dlgAlert.setPositiveButton("OK", null);
+                        dlgAlert.setCancelable(true);
+                        dlgAlert.create().show();
+                    }
+
 
                 } else {
                     db.addQuestion(q5);
+                    if(poziomCukruDouble>=126){
+                        AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(this);
+                        dlgAlert.setMessage("Twój poziom cukru jest za wysoki!");
+                        dlgAlert.setTitle("UWAGA!");
+                        dlgAlert.setPositiveButton("OK", null);
+                        dlgAlert.setCancelable(true);
+                        dlgAlert.create().show();
+                    }
+                    if(poziomCukruDouble<=70){
+                        AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(this);
+                        dlgAlert.setMessage("Twój poziom cukru jest za niski!");
+                        dlgAlert.setTitle("UWAGA!");
+                        dlgAlert.setPositiveButton("OK", null);
+                        dlgAlert.setCancelable(true);
+                        dlgAlert.create().show();
+                    }
+
 
                 }
 
