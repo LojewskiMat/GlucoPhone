@@ -6,12 +6,19 @@ package com.example.gosia.glucophone;
 
 import android.app.Activity;
 import android.graphics.Color;
+import android.graphics.DashPathEffect;
+import android.graphics.Paint;
 import android.os.Bundle;
+import android.widget.Toast;
 
 
 import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.LegendRenderer;
 import com.jjoe64.graphview.series.DataPoint;
+import com.jjoe64.graphview.series.DataPointInterface;
 import com.jjoe64.graphview.series.LineGraphSeries;
+import com.jjoe64.graphview.series.OnDataPointTapListener;
+import com.jjoe64.graphview.series.Series;
 
 import java.util.List;
 
@@ -66,12 +73,25 @@ public class Wykres extends Activity{
 
         GraphView graph = (GraphView) findViewById(R.id.graph);
         series = new LineGraphSeries<DataPoint>();
+        series.setTitle("Wynik przed posiłkiem");
 
         series2 = new LineGraphSeries<DataPoint>();
+        series2.setTitle("Wynik po posiłku");
 
         series3 = new LineGraphSeries<DataPoint>();
+      series3.setTitle("Norma przed posiłkiem");
 
         series4 = new LineGraphSeries<DataPoint>();
+      series4.setTitle("Norma po posiłku");
+
+      /*  Paint paint = new Paint();
+        paint.setStyle(Paint.Style.STROKE);
+        paint.setStrokeWidth(3);
+        paint.setColor(Color.RED);
+        paint.setPathEffect(new DashPathEffect(new float[]{1, 1}, 5));
+        series3.setCustomPaint(paint);
+        series4.setCustomPaint(paint);*/
+
 
 
 
@@ -105,7 +125,8 @@ public class Wykres extends Activity{
         }
         graph.addSeries(series);
         graph.addSeries(series3);
-        series3.setColor(Color.BLUE);
+        series3.setColor(Color.RED);
+
 
 
         for (int i =0; i<quesList2.size(); i++){
@@ -139,10 +160,45 @@ public class Wykres extends Activity{
         series2.setColor(Color.rgb(92, 126, 0));
 
         graph.addSeries(series4);
-        series4.setColor(Color.rgb(92, 126, 0));
+       series4.setColor(Color.CYAN);
+
+        series.setOnDataPointTapListener(new OnDataPointTapListener() {
+            @Override
+            public void onTap(Series series, DataPointInterface dataPointInterface) {
+                Toast.makeText(Wykres.this, "Wartość: " + dataPointInterface, Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+        series.setDrawDataPoints(true);
+        series.setDataPointsRadius(10);
+
+
+
+        series2.setOnDataPointTapListener(new OnDataPointTapListener() {
+            @Override
+            public void onTap(Series series, DataPointInterface dataPointInterface) {
+                Toast.makeText(Wykres.this, "Wartość: " + dataPointInterface, Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+
+
+        series2.setDrawDataPoints(true);
+        series2.setDataPointsRadius(10);
+
+
+
 
         graph.getViewport().setScalable(true);
         graph.getViewport().setScalableY(true);
+
+        graph.setTitle("Twoje wyniki" + "Jan Kowalski"); //zmiana imienia wg logowania?.... 
+        graph.getLegendRenderer().setVisible(true);
+        graph.getLegendRenderer().setAlign(LegendRenderer.LegendAlign.TOP);
+
+
 
 
     }
