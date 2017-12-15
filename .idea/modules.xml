@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/GlucoPhon.iml" filepath="$PROJECT_DIR$/GlucoPhon.iml" />
+      <module fileurl="file://C:\Users\Wiktor\Desktop\GlucoPhone\GlucoPhon.iml" filepath="C:\Users\Wiktor\Desktop\GlucoPhone\GlucoPhon.iml" />
       <module fileurl="file://$PROJECT_DIR$/GlucoPhone.iml" filepath="$PROJECT_DIR$/GlucoPhone.iml" />
+      <module fileurl="file://C:\Users\Wiktor\Desktop\GlucoPhone\GlucoPhone.iml" filepath="C:\Users\Wiktor\Desktop\GlucoPhone\GlucoPhone.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\Users\Wiktor\Desktop\GlucoPhone\app\app.iml" filepath="C:\Users\Wiktor\Desktop\GlucoPhone\app\app.iml" />
     </modules>
   </component>
 </project>

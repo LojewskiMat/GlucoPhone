@@ -17,6 +17,8 @@ import android.widget.Toast;
  */
 public class Loguj extends Activity{
 
+    //komentarz testowy
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
