@@ -2,64 +2,64 @@
 
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <TimePicker
+        android:id="@+id/timePicker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/timePicker"
-        android:layout_gravity="center_horizontal"
-        />
+        android:layout_gravity="center_horizontal" />
 
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
         <EditText
+            android:id="@+id/editText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="number"
-            android:ems="10"
-            android:id="@+id/editText"
             android:layout_gravity="center_horizontal"
-            android:text="000" />
+            android:ems="10"
+            android:inputType="number"
+            android:text="@string/startValue" />
 
         <CheckBox
+            android:id="@+id/checkBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Po posiłku"
-            android:id="@+id/checkBox"
-            android:checked="false" />
+            android:checked="false"
+            android:text="@string/po_posilku" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <Button
+            android:id="@+id/recznie"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Zapisz"
-            android:id="@+id/recznie"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+            android:text="@string/zapiszDodajPomiar" />
 
         <TextView
+            android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="lub"
-            android:id="@+id/textView"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+            android:text="lub" />
 
         <Button
+            android:id="@+id/pobierz"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Synchronizuj"
-            android:id="@+id/pobierz"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+            android:text="@string/synchronizujDodajPomiar" />
     </LinearLayout>
 
 

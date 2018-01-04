@@ -1,39 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    android:orientation="vertical"
+    android:background="#000000"
     android:fitsSystemWindows="true"
 
-    android:background="#000000">
+    android:orientation="vertical">
 
     <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="#ffffff"
-        android:text="Wybierz pacjenta"
         android:id="@+id/pacjent"
-        android:layout_gravity="center_horizontal"
-        android:background="#38d9dbf4"
-        android:layout_marginBottom="15dp"/>
-
-    <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="#ffffff"
-        android:text="Wyloguj"
-        android:id="@+id/wyloguj"
         android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="15dp"
         android:background="#38d9dbf4"
-        android:layout_marginBottom="15dp"/>
+        android:text="@string/wybierz_pacjenta"
+        android:textColor="#ffffff" />
+
+    <Button
+        android:id="@+id/wyloguj"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="15dp"
+        android:background="#38d9dbf4"
+        android:text="@string/wylogujDoktor"
+        android:textColor="#ffffff" />
 
     <ImageView
+        android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/imageView"
         android:layout_gravity="center_horizontal"
         android:src="@drawable/tlo" />
 

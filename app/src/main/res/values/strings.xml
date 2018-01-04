@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">GlucoPhone</string>
+    <string name="nowy_pomiar">Nowy pomiar</string>
+    <string name="historia">Historia</string>
+    <string name="wyloguj">Wyloguj</string>
+    <string name="wybierz_pacjenta">Wybierz pacjenta</string>
+    <string name="wylogujDoktor">Wyloguj</string>
+    <string name="wpisz_login">Wpisz login</string>
+    <string name="wpisz_has_o">Wpisz hasło</string>
+    <string name="zaloguj">Zaloguj</string>
+    <string name="historiaMama">Historia</string>
+    <string name="wylogujMama">Wyloguj</string>
+    <string name="startValue">000</string>
+    <string name="po_posilku">Po posiłku</string>
+    <string name="zapiszDodajPomiar">Zapisz</string>
+    <string name="synchronizujDodajPomiar">Synchronizuj</string>
 </resources>

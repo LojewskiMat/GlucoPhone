@@ -1,10 +1,5 @@
 package com.example.gosia.glucophone;
 
-/**
- * Created by Gosia on 20.10.2017.
- */
-
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -14,9 +9,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by malgosia on 15.04.17.
- */
 public class DBHelper2 extends SQLiteOpenHelper {
 
     private static final int DATABASE_VERSION = 2;
@@ -34,7 +26,7 @@ public class DBHelper2 extends SQLiteOpenHelper {
 
     private SQLiteDatabase dbase2;
 
-    public DBHelper2(Context context) {
+    DBHelper2(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
     @Override
@@ -82,7 +74,7 @@ public class DBHelper2 extends SQLiteOpenHelper {
         onCreate(db);
     }
     // Adding new question
-    public void addQuestion(DodajPytanie quest) {
+    void addQuestion(DodajPytanie quest) {
         //SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(KEY_QUES, quest.getQUESTION());
@@ -93,7 +85,7 @@ public class DBHelper2 extends SQLiteOpenHelper {
         // Inserting Row
         dbase2.insert(TABLE_QUEST, null, values);
     }
-    public List<DodajPytanie> getAllQuestions() {
+    List<DodajPytanie> getAllQuestions() {
         List<DodajPytanie> quesList = new ArrayList<>();
         // Select All Query
         String selectQuery = "SELECT  * FROM " + TABLE_QUEST;

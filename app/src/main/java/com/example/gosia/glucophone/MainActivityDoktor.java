@@ -18,26 +18,19 @@ public class MainActivityDoktor extends Activity {
         setContentView(R.layout.activity_main_doktor);
 
 
-
-
-
-
-        final Button przyciskPacjent = (Button) findViewById(R.id.pacjent);
+        final Button przyciskPacjent = findViewById(R.id.pacjent);
         przyciskPacjent.setOnClickListener(new View.OnClickListener() {
-                                              public void onClick(View v) {
-                                                  Intent intent = new Intent(getApplicationContext(), WyborPacjenta.class);
-                                                  startActivity(intent);
+                                               public void onClick(View v) {
+                                                   Intent intent = new Intent(getApplicationContext(), WyborPacjenta.class);
+                                                   startActivity(intent);
+                                               }
 
 
-                                              }
-
-
-                                          }
+                                           }
         );
 
 
-
-        final Button przyciskWyloguj = (Button) findViewById(R.id.wyloguj);
+        final Button przyciskWyloguj = findViewById(R.id.wyloguj);
         przyciskWyloguj.setOnClickListener(new View.OnClickListener() {
                                                public void onClick(View v) {
                                                    Intent intent = new Intent(getApplicationContext(), Loguj.class);

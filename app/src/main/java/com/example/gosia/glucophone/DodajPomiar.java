@@ -1,8 +1,6 @@
 package com.example.gosia.glucophone;
 
-/**
- * Created by Gosia on 20.10.2017.
- */
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -82,7 +80,7 @@ public class DodajPomiar extends Activity implements View.OnClickListener {
 
             try {
 
-                int godzina, minuta = 0;
+                int godzina, minuta;
 
                 TimePicker zegarek = (TimePicker) findViewById(R.id.timePicker);
                 // zegarek.setIs24HourView(true);
@@ -92,7 +90,7 @@ public class DodajPomiar extends Activity implements View.OnClickListener {
                 String czas = String.valueOf(new StringBuilder().append(godzina).append(minuta));
 
                 Calendar c = Calendar.getInstance();
-                SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd");
+                @SuppressLint("SimpleDateFormat") SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd");
                 String formattedDate = df.format(c.getTime());
 
 
@@ -102,16 +100,16 @@ public class DodajPomiar extends Activity implements View.OnClickListener {
 
                 if (poJedzeniu.isChecked()) {
                     db2.addQuestion(q5);
-                    if(poziomCukruDouble>=140){
-                        AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(this);
+                    if (poziomCukruDouble >= 140) {
+                        AlertDialog.Builder dlgAlert = new AlertDialog.Builder(this);
                         dlgAlert.setMessage("Twój poziom cukru jest za wysoki!");
                         dlgAlert.setTitle("UWAGA!");
                         dlgAlert.setPositiveButton("OK", null);
                         dlgAlert.setCancelable(true);
                         dlgAlert.create().show();
                     }
-                    if(poziomCukruDouble<=70){
-                        AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(this);
+                    if (poziomCukruDouble <= 70) {
+                        AlertDialog.Builder dlgAlert = new AlertDialog.Builder(this);
                         dlgAlert.setMessage("Twój poziom cukru jest za niski!");
                         dlgAlert.setTitle("UWAGA!");
                         dlgAlert.setPositiveButton("OK", null);
@@ -122,16 +120,16 @@ public class DodajPomiar extends Activity implements View.OnClickListener {
 
                 } else {
                     db.addQuestion(q5);
-                    if(poziomCukruDouble>=126){
-                        AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(this);
+                    if (poziomCukruDouble >= 126) {
+                        AlertDialog.Builder dlgAlert = new AlertDialog.Builder(this);
                         dlgAlert.setMessage("Twój poziom cukru jest za wysoki!");
                         dlgAlert.setTitle("UWAGA!");
                         dlgAlert.setPositiveButton("OK", null);
                         dlgAlert.setCancelable(true);
                         dlgAlert.create().show();
                     }
-                    if(poziomCukruDouble<=70){
-                        AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(this);
+                    if (poziomCukruDouble <= 70) {
+                        AlertDialog.Builder dlgAlert = new AlertDialog.Builder(this);
                         dlgAlert.setMessage("Twój poziom cukru jest za niski!");
                         dlgAlert.setTitle("UWAGA!");
                         dlgAlert.setPositiveButton("OK", null);
@@ -162,7 +160,6 @@ public class DodajPomiar extends Activity implements View.OnClickListener {
 
         }
     }
-
 
 
     public List<Double> getList() {

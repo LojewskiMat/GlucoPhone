@@ -15,16 +15,16 @@ import android.widget.Spinner;
 public class WyborPacjenta extends Activity implements AdapterView.OnItemSelectedListener {
 
     private Spinner spinner;
-    private static final String[]paths = {"Jan Nowak", "Staś Kowalski", "Ala Makota"};
+    private static final String[] paths = {"Jan Nowak", "Staś Kowalski", "Ala Makota"};
 
     @Override
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.wybor_pacjenta);
 
-        spinner = (Spinner)findViewById(R.id.spinner1);
-        ArrayAdapter<String>adapter = new ArrayAdapter<String>(WyborPacjenta.this,
-                android.R.layout.simple_spinner_item,paths);
+        spinner = findViewById(R.id.spinner1);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(WyborPacjenta.this,
+                android.R.layout.simple_spinner_item, paths);
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);

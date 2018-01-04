@@ -18,22 +18,18 @@ public class MainActivityMama extends Activity {
         setContentView(R.layout.activity_main_mama);
 
 
-
-
-        final Button przyciskWykres = (Button) findViewById(R.id.historia);
+        final Button przyciskWykres = findViewById(R.id.historia);
         przyciskWykres.setOnClickListener(new View.OnClickListener() {
                                               public void onClick(View v) {
                                                   Intent intent = new Intent(getApplicationContext(), Wykres.class);
                                                   startActivity(intent);
-
-
                                               }
 
 
                                           }
         );
 
-        final Button przyciskWyloguj = (Button) findViewById(R.id.wyloguj);
+        final Button przyciskWyloguj = findViewById(R.id.wyloguj);
         przyciskWyloguj.setOnClickListener(new View.OnClickListener() {
                                                public void onClick(View v) {
                                                    Intent intent = new Intent(getApplicationContext(), Loguj.class);
@@ -41,8 +37,6 @@ public class MainActivityMama extends Activity {
                                                }
                                            }
         );
-
-
     }
 }
 

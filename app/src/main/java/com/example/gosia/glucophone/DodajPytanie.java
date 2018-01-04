@@ -6,57 +6,55 @@ package com.example.gosia.glucophone;
 public class DodajPytanie {
 
     private int ID;
-private String QUESTION;
-private String ANSWER;
+    private String QUESTION;
+    private String ANSWER;
     private String ANSWER2;
 
-        public DodajPytanie()
-        {
-            ID=0;
-            QUESTION="";
-            ANSWER="";
-            ANSWER2="";
-        }
+    DodajPytanie() {
+        ID = 0;
+        QUESTION = "";
+        ANSWER = "";
+        ANSWER2 = "";
+    }
 
 
-        public DodajPytanie(String pytanie, String odpowiedz, String odpowiedz2) {
+    DodajPytanie(String pytanie, String odpowiedz, String odpowiedz2) {
 
-            QUESTION = pytanie;
-            ANSWER = odpowiedz;
-            ANSWER2 = odpowiedz2;
-        }
+        QUESTION = pytanie;
+        ANSWER = odpowiedz;
+        ANSWER2 = odpowiedz2;
+    }
 
-        public int getID() {
-            return ID;
-        }
+    public int getID() {
+        return ID;
+    }
 
-        public void setID(int ID) {
-            this.ID = ID;
-        }
+    void setID(int ID) {
+        this.ID = ID;
+    }
 
-        public String getQUESTION() {
-            return QUESTION;
-        }
+    String getQUESTION() {
+        return QUESTION;
+    }
 
-        public void setQUESTION(String QUESTION) {
-            this.QUESTION = QUESTION;
-        }
+    void setQUESTION(String QUESTION) {
+        this.QUESTION = QUESTION;
+    }
 
 
+    String getANSWER() {
+        return ANSWER;
+    }
 
-        public String getANSWER() {
-            return ANSWER;
-        }
+    void setANSWER(String ANSWER) {
+        this.ANSWER = ANSWER;
+    }
 
-        public void setANSWER(String ANSWER) {
-            this.ANSWER = ANSWER;
-        }
-
-    public String getANSWER2() {
+    String getANSWER2() {
         return ANSWER2;
     }
 
-    public void setANSWER2(String ANSWER2) {
+    void setANSWER2(String ANSWER2) {
         this.ANSWER2 = ANSWER2;
     }
 }
