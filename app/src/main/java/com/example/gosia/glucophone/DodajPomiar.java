@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.util.Pair;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,6 +19,9 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.example.gosia.glucophone.models.Pomiar;
+import com.example.gosia.glucophone.retrofit.BaseRetrofit;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
@@ -26,11 +30,19 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
 
+import butterknife.BindView;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 
 public class DodajPomiar extends Activity implements View.OnClickListener {
 
     private List<Double> list;
+    private Pomiar pomiar;
 
+    @BindView(R.id.editText)
+    EditText pomiarWartość;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,24 +59,19 @@ public class DodajPomiar extends Activity implements View.OnClickListener {
         Button synchronizuj = (Button) findViewById(R.id.pobierz);
         synchronizuj.setOnClickListener(this);
 
-
         // DBHelper db = new DBHelper(this);
         // List<DodajPytanie> quesList;
         // quesList = db.getAllQuestions();
         // int k = quesList.size();
-
-
     }
 
     @Override
     public void onClick(View v) {
 
-
         DBHelper db = new DBHelper(this);
         List<DodajPytanie> quesList;
         quesList = db.getAllQuestions();
         int k = quesList.size();
-
 
         DBHelper2 db2 = new DBHelper2(this);
         List<DodajPytanie> quesList2;
@@ -137,34 +144,49 @@ public class DodajPomiar extends Activity implements View.OnClickListener {
                         dlgAlert.create().show();
                     }
 
-
                 }
 
+                Pomiar pomiar = getPomiar();
+                Call<Pomiar> pomiarCall = new BaseRetrofit().getPomiarApi().postPomiar(pomiar);
+                pomiarCall.enqueue(new Callback<Pomiar>() {
+                    @Override
+                    public void onResponse(Call<Pomiar> call, Response<Pomiar> response) {
+                        if (response.isSuccessful()) {
+                            Toast.makeText(DodajPomiar.this, "Wyslane! :D", Toast.LENGTH_SHORT).show();
+                        } else
+                            Toast.makeText(DodajPomiar.this, "Nie wyslalem :(\n" + response.errorBody().toString(), Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onFailure(Call<Pomiar> call, Throwable t) {
+                        Toast.makeText(DodajPomiar.this, "Nie wyslalem\n" + t.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
 
                 Toast.makeText(getBaseContext(), "Dodano wynik: " + poziomCukru, Toast.LENGTH_SHORT).show();
 
 
             } catch (NullPointerException e) {
                 Toast.makeText(getBaseContext(), "Uwaga! Pomiar niezapisany!", Toast.LENGTH_SHORT).show();
-
             }
-
-
         }
-
 
         if (v.getId() == R.id.pobierz) {
-
-
             Toast.makeText(getBaseContext(), "Nie znaleziono urządzenia", Toast.LENGTH_SHORT).show();
-
         }
     }
-
 
     public List<Double> getList() {
         return list;
     }
 
+    @NonNull
+    private Pomiar getPomiar() {
 
+        if (pomiar == null)
+            pomiar = new Pomiar();
+        pomiar.setWartosc(Integer.parseInt(pomiarWartość.getText().toString().trim()));
+        pomiar.setData(Calendar.getInstance().getTime().toString().trim());
+        return pomiar;
+    }
 }

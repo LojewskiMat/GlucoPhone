@@ -41,10 +41,6 @@ public class DBHelper2 extends SQLiteOpenHelper {
     }
 
 
-
-
-
-
     private void addQuestions2()
     {
         DodajPytanie q1=new DodajPytanie("20160415","1315" ,"135");
@@ -58,10 +54,6 @@ public class DBHelper2 extends SQLiteOpenHelper {
 
         DodajPytanie q4 = new DodajPytanie("20170412","1809", "135");
         this.addQuestion(q4);
-
-
-
-
     }
 
 
