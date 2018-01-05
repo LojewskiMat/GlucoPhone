@@ -20,6 +20,7 @@
         android:id="@+id/bla"
         android:layout_width="match_parent"
         android:layout_height="248dp"
+        android:background="@android:drawable/btn_dropdown"
         android:visibility="visible" />
 
     <ImageView
@@ -28,6 +29,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:src="@drawable/tlo" />
+
+
 
 
 </LinearLayout>

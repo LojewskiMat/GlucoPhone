@@ -13,7 +13,7 @@ import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface PomiaryApi {
-    @GET("/pomiary/.json")
+    @GET("/pomiary/")
     Call<List<Pomiar>> getAllPomiar();
 
     @GET("/pomiary/{id}")

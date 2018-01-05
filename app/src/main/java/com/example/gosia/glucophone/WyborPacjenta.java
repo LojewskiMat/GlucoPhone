@@ -53,6 +53,7 @@ public class WyborPacjenta extends Activity implements AdapterView.OnItemSelecte
         ButterKnife.bind(this);
         prepareRestApi();
         prepareListAdapter();
+        downloadPomiary();
 
         spinner = findViewById(R.id.spinner1);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(WyborPacjenta.this,
