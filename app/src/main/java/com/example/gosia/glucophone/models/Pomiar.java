@@ -8,14 +8,14 @@ import java.util.Date;
 
 public class Pomiar implements Parcelable {
     private Long id;
-    private Integer wartosc;
+    private Double wartosc;
     private String data;
 
     public Pomiar() {
     }
 
     private Pomiar(Parcel in){
-        wartosc = in.readInt();
+        wartosc = in.readDouble();
         data = in.readString();
     }
 
@@ -39,11 +39,11 @@ public class Pomiar implements Parcelable {
         this.id = id;
     }
 
-    public Integer getWartosc() {
+    public Double getWartosc() {
         return wartosc;
     }
 
-    public void setWartosc(Integer wartosc) {
+    public void setWartosc(Double wartosc) {
         this.wartosc = wartosc;
     }
 
@@ -62,7 +62,7 @@ public class Pomiar implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeInt(wartosc);
+        parcel.writeDouble(wartosc);
         parcel.writeString(data);
     }
 }

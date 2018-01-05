@@ -44,6 +44,8 @@ public class DodajPomiar extends Activity implements View.OnClickListener {
     @BindView(R.id.editText)
     EditText pomiarWartość;
 
+    private double poziomCukruDouble;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -82,7 +84,7 @@ public class DodajPomiar extends Activity implements View.OnClickListener {
 
             final EditText nowyPomiar = (EditText) findViewById(R.id.editText);
             String poziomCukru = String.valueOf(nowyPomiar.getText());
-            double poziomCukruDouble = Double.parseDouble(nowyPomiar.getText().toString());
+            poziomCukruDouble = Double.parseDouble(nowyPomiar.getText().toString());
 
 
             try {
@@ -146,29 +148,28 @@ public class DodajPomiar extends Activity implements View.OnClickListener {
 
                 }
 
-                Pomiar pomiar = getPomiar();
-                Call<Pomiar> pomiarCall = new BaseRetrofit().getPomiarApi().postPomiar(pomiar);
-                pomiarCall.enqueue(new Callback<Pomiar>() {
-                    @Override
-                    public void onResponse(Call<Pomiar> call, Response<Pomiar> response) {
-                        if (response.isSuccessful()) {
-                            Toast.makeText(DodajPomiar.this, "Wyslane! :D", Toast.LENGTH_SHORT).show();
-                        } else
-                            Toast.makeText(DodajPomiar.this, "Nie wyslalem :(\n" + response.errorBody().toString(), Toast.LENGTH_SHORT).show();
-                    }
-
-                    @Override
-                    public void onFailure(Call<Pomiar> call, Throwable t) {
-                        Toast.makeText(DodajPomiar.this, "Nie wyslalem\n" + t.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
-
                 Toast.makeText(getBaseContext(), "Dodano wynik: " + poziomCukru, Toast.LENGTH_SHORT).show();
-
 
             } catch (NullPointerException e) {
                 Toast.makeText(getBaseContext(), "Uwaga! Pomiar niezapisany!", Toast.LENGTH_SHORT).show();
             }
+
+            Pomiar pomiar = getPomiar();
+            Call<Pomiar> pomiarCall = new BaseRetrofit().getPomiarApi().postPomiar(pomiar);
+            pomiarCall.enqueue(new Callback<Pomiar>() {
+                @Override
+                public void onResponse(Call<Pomiar> call, Response<Pomiar> response) {
+                    if (response.isSuccessful()) {
+                        Toast.makeText(DodajPomiar.this, "Wyslane! :D", Toast.LENGTH_SHORT).show();
+                    } else
+                        Toast.makeText(DodajPomiar.this, "Nie wyslalem :(\n" + response.errorBody().toString(), Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onFailure(Call<Pomiar> call, Throwable t) {
+                    Toast.makeText(DodajPomiar.this, "Nie wyslalem\n" + t.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
         }
 
         if (v.getId() == R.id.pobierz) {
@@ -182,10 +183,9 @@ public class DodajPomiar extends Activity implements View.OnClickListener {
 
     @NonNull
     private Pomiar getPomiar() {
-
         if (pomiar == null)
             pomiar = new Pomiar();
-        pomiar.setWartosc(Integer.parseInt(pomiarWartość.getText().toString().trim()));
+        pomiar.setWartosc(poziomCukruDouble);
         pomiar.setData(Calendar.getInstance().getTime().toString().trim());
         return pomiar;
     }
