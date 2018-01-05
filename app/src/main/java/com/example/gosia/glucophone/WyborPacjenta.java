@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -48,9 +49,11 @@ public class WyborPacjenta extends Activity implements AdapterView.OnItemSelecte
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(wybor_pacjenta);
-        prepareRestApi();
-
         listView = findViewById(R.id.bla);
+        ButterKnife.bind(this);
+        prepareRestApi();
+        prepareListAdapter();
+
         spinner = findViewById(R.id.spinner1);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(WyborPacjenta.this,
                 android.R.layout.simple_spinner_item, paths);
@@ -58,7 +61,6 @@ public class WyborPacjenta extends Activity implements AdapterView.OnItemSelecte
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
-        prepareListAdapter();
 
 
     }
@@ -89,8 +91,7 @@ public class WyborPacjenta extends Activity implements AdapterView.OnItemSelecte
 
     private void prepareListAdapter() {
         pomiaryList = new ArrayList<>();
-
-        adapter = new PomiaryHolderArrayAdapter(getApplicationContext(), pomiaryList);
+        adapter = new PomiaryHolderArrayAdapter(this, pomiaryList);
         listView.setAdapter(adapter);
     }
 
@@ -112,7 +113,7 @@ public class WyborPacjenta extends Activity implements AdapterView.OnItemSelecte
                 if (response.isSuccessful()) {
                     pomiaryList.addAll(response.body());
                     adapter.notifyDataSetChanged();
-                    Toast.makeText(WyborPacjenta.this, "Restaurant count : " + pomiaryList.size(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(WyborPacjenta.this, "Pomiary count : " + pomiaryList.size(), Toast.LENGTH_SHORT).show();
                 }
                 hideProgressDialog();
             }
@@ -140,7 +141,7 @@ public class WyborPacjenta extends Activity implements AdapterView.OnItemSelecte
     private void clearList() {
         pomiaryList.clear();
         adapter.notifyDataSetChanged();
-        recyclerViewAdapter.notifyDataSetChanged();
+//        recyclerViewAdapter.notifyDataSetChanged();
     }
 
 }
