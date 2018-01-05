@@ -2,7 +2,7 @@ package com.example.gosia.glucophone.retrofit;
 
 import android.support.annotation.NonNull;
 
-import com.example.gosia.glucophone.service.PacjentApi;
+import com.example.gosia.glucophone.service.PomiaryApi;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -14,7 +14,7 @@ public class BaseRetrofit {
     private static String ENDPOINT = "http://10.0.2.2:3000/";
 
     private final Retrofit retrofit;
-    private final PacjentApi pacjentApi;
+    private final PomiaryApi pomiaryApi;
 
     public BaseRetrofit() {
         retrofit = new Retrofit.Builder()
@@ -22,7 +22,7 @@ public class BaseRetrofit {
                 .addConverterFactory(GsonConverterFactory.create(getGson()))
                 .build();
 
-        pacjentApi = retrofit.create(PacjentApi.class);
+        pomiaryApi = retrofit.create(PomiaryApi.class);
     }
 
     @NonNull
@@ -33,7 +33,7 @@ public class BaseRetrofit {
                 .create();
     }
 
-    public PacjentApi getPomiarApi() {
-        return pacjentApi;
+    public PomiaryApi getPomiarApi() {
+        return pomiaryApi;
     }
 }
